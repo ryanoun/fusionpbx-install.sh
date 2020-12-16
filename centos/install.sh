@@ -17,7 +17,7 @@ yum -y update && yum -y upgrade
 yum -y install http://rpms.remirepo.net/enterprise/remi-release-7.rpm
 
 # Installing basics packages
-yum -y install ntp yum-utils net-tools epel-release htop vim openssl
+yum -y install ntp yum-utils net-tools epel-release htop vim openssl wget curl firewalld
  
 # Disable SELinux
 resources/selinux.sh
@@ -26,7 +26,11 @@ resources/selinux.sh
 resources/fusionpbx.sh
 
 #Postgres
-resources/postgresql.sh
+#resources/postgresql.sh
+
+#mariadb
+resources/mariadb105.sh
+
 
 #NGINX web server
 resources/sslcert.sh

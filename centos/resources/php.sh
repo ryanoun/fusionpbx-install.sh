@@ -13,7 +13,8 @@ verbose "Install PHP and PHP-FPM"
 #set the version of php
 #yum-config-manager --enable remi-php70
 #yum-config-manager --enable remi-php71
-yum-config-manager --enable remi-php72
+#yum-config-manager --enable remi-php72
+yum-config-manager --enable remi-php74
 
 #install dependencies
 yum -y install php-fpm php-gd php-pgsql php-odbc php-curl php-imap php-opcache php-common php-pdo php-soap php-xml php-xmlrpc php-cli php-gd

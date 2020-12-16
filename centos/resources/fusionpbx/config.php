@@ -25,7 +25,7 @@
 */
 
 //set the database type
-	$db_type = 'pgsql'; //sqlite, mysql, pgsql, others with a manually created PDO connection
+	$db_type = 'mysql'; //sqlite, mysql, pgsql, others with a manually created PDO connection
 
 //sqlite: the db_name and db_path are automatically assigned however the values can be overidden by setting the values here.
 	//$db_name = 'fusionpbx.db'; //host name/ip address + '.db' is the default database filename
@@ -33,7 +33,7 @@
 
 //pgsql: database connection information
 	$db_host = '{database_host}';
-	$db_port = '5432';
+	$db_port = '3306';
 	$db_name = 'fusionpbx';
 	$db_username = '{database_username}';
 	$db_password = '{database_password}';
