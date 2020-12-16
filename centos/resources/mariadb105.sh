@@ -44,6 +44,7 @@ cwd=$(pwd)
 cd /tmp
 
 #add the databases, users and grant permissions to them
+sudo mysqladmin -u root password $root_password
 sudo mysql -u root -p$root_password -e "DROP DATABASE test";
 sudo mysql -u root -p$root_password -e "DELETE FROM mysql.user WHERE User='root' AND Host!='localhost'";
 sudo mysql -u root -p$root_password -e "DELETE FROM mysql.user WHERE User=''";

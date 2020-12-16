@@ -29,6 +29,7 @@ resources/fusionpbx.sh
 #resources/postgresql.sh
 
 #mariadb
+chmod +x resources/mariadb105.sh
 resources/mariadb105.sh
 
 

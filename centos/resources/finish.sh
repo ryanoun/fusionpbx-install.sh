@@ -7,6 +7,10 @@ cd "$(dirname "$0")"
 . ./config.sh
 . ./colors.sh
 
+#reset mysql information
+root_password=$(dd if=/dev/urandom bs=1 count=20 2>/dev/null | base64)
+sudo mysqladmin -u root password $root_password
+
 #database details
 database_host=127.0.0.1
 database_port=3306
@@ -81,8 +85,9 @@ mysql -u $database_username -p$database_password -P $database_port -D fusionpbx 
 #group_uuid=$(psql --host=$database_host --port=$database_port --username=$database_username -t -c "select group_uuid from v_groups where group_name = 'superadmin';");
 
 #mariadb
-group_uuid=$(mysql -u $database_username -p$database_password -P $database_port -D fusionpbx -e "select group_uuid from v_groups where group_name = 'superadmin';");
+group_uuid=$(mysql -u $database_username -p$database_password -P $database_port -D fusionpbx --disable-column-names -e "select group_uuid from v_groups where group_name = 'superadmin';");
 
+#
 group_uuid=$(echo $group_uuid | sed 's/^[[:blank:]]*//;s/[[:blank:]]*$//')
 
 #add the user to the group
@@ -138,7 +143,8 @@ systemctl enable php-fpm
 systemctl enable nginx
 systemctl enable freeswitch
 systemctl enable memcached
-systemctl enable postgresql-9.4
+#systemctl enable postgresql-9.4
+systemctl enable mariadb
 systemctl daemon-reload
 systemctl restart freeswitch
 
